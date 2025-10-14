@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 496203300}
   - component: {fileID: 496203299}
   m_Layer: 5
-  m_Name: Life Expectancy (1)
+  m_Name: 'Background '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +386,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _WidthHeightRadius: {r: 1200, g: 320, b: 200, a: 0}
+    - _WidthHeightRadius: {r: 1200, g: 361.9492, b: 240, a: 0}
   m_BuildTextureStacks: []
 --- !u!1 &619394800
 GameObject:
@@ -583,8 +583,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -2.3743, y: -551}
-  m_SizeDelta: {x: 1200, y: 320}
+  m_AnchoredPosition: {x: -2.3743, y: -790}
+  m_SizeDelta: {x: 1200, y: 361.9492}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1266821229
 MonoBehaviour:
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 100
+  radius: 120
   image: {fileID: 1266821230}
 --- !u!114 &1266821230
 MonoBehaviour:
@@ -712,8 +712,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -2.3743, y: -202}
-  m_SizeDelta: {x: 1200, y: 320}
+  m_AnchoredPosition: {x: -2.3743, y: -370.05078}
+  m_SizeDelta: {x: 1200, y: 361.9492}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1748507998
 MonoBehaviour:
@@ -765,7 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 100
+  radius: 120
   image: {fileID: 1748507998}
 --- !u!1 &2029450527
 GameObject:
@@ -872,7 +872,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _WidthHeightRadius: {r: 1200, g: 320, b: 200, a: 0}
+    - _WidthHeightRadius: {r: 1200, g: 361.9492, b: 240, a: 0}
   m_BuildTextureStacks: []
 --- !u!1 &2102740321
 GameObject:
