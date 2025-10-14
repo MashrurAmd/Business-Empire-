@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.0064812, y: 233.77441}
-  m_SizeDelta: {x: 1284, y: 1478.8506}
+  m_AnchoredPosition: {x: 4.0803, y: 157}
+  m_SizeDelta: {x: 980.5667, y: 1129.3704}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &496203299
 MonoBehaviour:
@@ -386,7 +386,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _WidthHeightRadius: {r: 1200, g: 361.9492, b: 240, a: 0}
+    - _WidthHeightRadius: {r: 865.14, g: 260.947, b: 200, a: 0}
   m_BuildTextureStacks: []
 --- !u!1 &619394800
 GameObject:
@@ -583,8 +583,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -2.3743, y: -790}
-  m_SizeDelta: {x: 1200, y: 361.9492}
+  m_AnchoredPosition: {x: 6, y: -567}
+  m_SizeDelta: {x: 865.14, y: 260.947}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1266821229
 MonoBehaviour:
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 120
+  radius: 100
   image: {fileID: 1266821230}
 --- !u!114 &1266821230
 MonoBehaviour:
@@ -675,7 +675,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _WidthHeightRadius: {r: 1284, g: 1478.8506, b: 200, a: 0}
+    - _WidthHeightRadius: {r: 980.5667, g: 1129.3704, b: 200, a: 0}
   m_BuildTextureStacks: []
 --- !u!1 &1748507996
 GameObject:
@@ -712,8 +712,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -2.3743, y: -370.05078}
-  m_SizeDelta: {x: 1200, y: 361.9492}
+  m_AnchoredPosition: {x: 0, y: -94}
+  m_SizeDelta: {x: 883.2012, y: 451.5901}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1748507998
 MonoBehaviour:
@@ -735,7 +735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 66bde80ef89a71f4fb2745b642f8bebe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 551b6e8f24d71f243a0cc6a7cf82c18b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -872,7 +872,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _WidthHeightRadius: {r: 1200, g: 361.9492, b: 240, a: 0}
+    - _WidthHeightRadius: {r: 883.2012, g: 451.5901, b: 240, a: 0}
   m_BuildTextureStacks: []
 --- !u!1 &2102740321
 GameObject:
@@ -922,12 +922,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
