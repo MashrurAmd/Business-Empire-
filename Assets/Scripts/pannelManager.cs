@@ -4,16 +4,15 @@ using UnityEngine.UI;
 public class PanelSwitcher : MonoBehaviour
 {
     [Header("Assign your panels here")]
-    public GameObject[] panels; // All panels to control
-    public int startPanelIndex = 0; // Which panel to show first
+    public GameObject[] panels; // All panels you want to control
+    public int startPanelIndex = 0; // Panel to show at game start
 
-    [Header("Assign your buttons here")]
-    public Button button1;
-    public Button button2;
+    [Header("Assign buttons here (each button matches a panel by index)")]
+    public Button[] buttons; // Buttons that will switch to panels
 
     void Start()
     {
-        // Deactivate all panels first
+        // Deactivate all panels
         foreach (GameObject panel in panels)
             panel.SetActive(false);
 
@@ -21,20 +20,21 @@ public class PanelSwitcher : MonoBehaviour
         if (panels.Length > 0 && startPanelIndex < panels.Length)
             panels[startPanelIndex].SetActive(true);
 
-        // Add button listeners
-        if (button1 != null)
-            button1.onClick.AddListener(() => ShowPanel(0)); // show panel 0
-        if (button2 != null)
-            button2.onClick.AddListener(() => ShowPanel(1)); // show panel 1
+        // Set up button listeners
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            int index = i; // Capture index for the listener
+            buttons[i].onClick.AddListener(() => ShowPanel(index));
+        }
     }
 
     public void ShowPanel(int index)
     {
-        
+        // Deactivate all panels
         foreach (GameObject panel in panels)
             panel.SetActive(false);
 
-        
+        // Activate the selected panel
         if (index >= 0 && index < panels.Length)
             panels[index].SetActive(true);
     }
