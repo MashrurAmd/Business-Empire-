@@ -30,11 +30,11 @@ public class PanelSwitcher : MonoBehaviour
 
     public void ShowPanel(int index)
     {
-        // Deactivate all panels
+        
         foreach (GameObject panel in panels)
             panel.SetActive(false);
 
-        // Activate selected panel
+        
         if (index >= 0 && index < panels.Length)
             panels[index].SetActive(true);
     }
