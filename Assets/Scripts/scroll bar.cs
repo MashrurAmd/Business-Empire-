@@ -17,7 +17,7 @@ public class ScrollLockYElastic : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
 
-        // Set the initial starting position
+
         Vector3 startPos = rectTransform.anchoredPosition;
         startPos.y = minY;
         rectTransform.anchoredPosition = startPos;
@@ -27,24 +27,28 @@ public class ScrollLockYElastic : MonoBehaviour
     {
         Vector3 pos = rectTransform.anchoredPosition;
 
-        // Allow normal movement within bounds
+     
         if (pos.y <= maxY && pos.y >= minY)
         {
             targetPos = pos;
         }
         else
         {
-            // Clamp if it exceeds range
+           
             float clampedY = Mathf.Clamp(pos.y, minY, maxY);
             targetPos = new Vector3(pos.x, clampedY, pos.z);
         }
 
-        // Smooth elastic return
+        
         rectTransform.anchoredPosition = Vector3.Lerp(
             rectTransform.anchoredPosition,
             targetPos,
             Time.deltaTime * bounceSpeed
         );
+
+
+
+
     }
 }
 
