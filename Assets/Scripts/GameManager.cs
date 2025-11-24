@@ -71,13 +71,13 @@ public class GameManager : MonoBehaviour
         messageText.text = message;
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         moneyText.text = "Money: $" + money;
         ageText.text = "Age: " + age.ToString("F3"); // Show 3 decimals
     }
 
-    void GameOver()
+    public void GameOver()
     {
         PrintMessage("You have reached your life limit. Game Over!");
         // Optional: disable buttons or show end panel
