@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         int whole = Mathf.FloorToInt(age);
         float decimalPart = age - whole;
 
-        if (decimalPart >= 0.365f)
+        if (decimalPart >= 0.099f)
         {
             // Increase integer part
             whole += 1;
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     public void UpdateUI()
     {
         moneyText.text = "Money: $" + money;
-        ageText.text = "Age: " + age.ToString("F3"); // Show 3 decimals
+        ageText.text = age.ToString("F3"); // Show 3 decimals
     }
 
     public void GameOver()
