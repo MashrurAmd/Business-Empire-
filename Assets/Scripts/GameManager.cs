@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -60,7 +60,11 @@ public class GameManager : MonoBehaviour
             age = maxAge;
             GameOver();
         }
+
+        // ✅ Update UI every time age changes
+        UpdateUI();
     }
+
 
     public void PrintMessage(string message)
     {

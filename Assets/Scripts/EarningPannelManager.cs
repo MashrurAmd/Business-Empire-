@@ -14,21 +14,22 @@ public class EarningPanelManager : MonoBehaviour
 
     void OnBegClicked()
     {
-        int randomOutcome = Random.Range(0, 2); // 0 or 1
+        float chance = Random.Range(0f, 1f); // 0.0 to 1.0
 
-        if (randomOutcome == 0)
+        if (chance < 0.3f)
         {
-            // Nobody felt sorry
-            gameManager.IncreaseAge(); // increase age by 0.001
-            gameManager.PrintMessage("Nobody felt sorry for you, you made $0.");
+            // 30% chance - positive outcome
+            int earned = Random.Range(0, 26); // 0-25$
+            gameManager.AddMoney(earned); // updates money and age
+            gameManager.PrintMessage("You put your pride to the side, you received $" + earned + ".");
         }
         else
         {
-            // Earn random money 0-10
-            int earned = Random.Range(0, 11);
-            gameManager.AddMoney(earned); // adds money AND increases age by 0.001
-            gameManager.PrintMessage("You put your pride to the side, you received $" + earned + ".");
+            // 70% chance - nobody felt sorry
+            gameManager.IncreaseAge(); // increase age by 0.001, updates UI
+            gameManager.PrintMessage("Nobody felt sorry for you, you made $0.");
         }
     }
+
 
 }
