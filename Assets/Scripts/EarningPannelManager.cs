@@ -13,61 +13,108 @@ public class EarningPanelManager : MonoBehaviour
     public Button scammerButton;
     public Button messengerButton;
 
-    public void Start()
+    private void Start()
     {
-        // Assign button listeners
         begButton.onClick.AddListener(OnBegClicked);
         stealButton.onClick.AddListener(OnStealClicked);
 
-        // Placeholder listeners for other buttons
         bottleReturnButton.onClick.AddListener(() => gameManager.PrintMessage("Bottle Return clicked!"));
         scammerButton.onClick.AddListener(() => gameManager.PrintMessage("Scammer clicked!"));
         messengerButton.onClick.AddListener(() => gameManager.PrintMessage("Messenger clicked!"));
     }
 
-    // ------------------- Beg Button -------------------
+
+    // ------------------- BEG FUNCTION -------------------
     public void OnBegClicked()
     {
-        float chance = Random.Range(0f, 1f); // 0-1
+        float chance = Random.value; // 0 - 1
 
-        if (chance < 0.3f) // 30% chance positive
+        if (chance < 0.30f) // 30% positive
         {
-            int earned = Random.Range(0, 26); // $0-25
-            gameManager.AddMoney(earned); // adds money + increases age
-            gameManager.PrintMessage("You put your pride to the side, you received $" + earned + ".");
+            int earned = Random.Range(0, 26); // $0–25
+            gameManager.AddMoney(earned);     // also increases age
+            gameManager.PrintMessage($"You put your pride aside and received ${earned}.");
         }
         else
         {
-            // 70% chance nobody felt sorry
-            gameManager.IncreaseAge(); // increases age by 0.001
+            gameManager.IncreaseAge(); // Add life cost (0.001)
             gameManager.PrintMessage("Nobody felt sorry for you, you made $0.");
         }
     }
 
-    // ------------------- Steal Button -------------------
+
+    // ------------------- STEAL FUNCTION -------------------
     public void OnStealClicked()
     {
-        float chance = Random.Range(0f, 1f); // 0-1
+        float chance = Random.value;
 
-        if (chance < 0.8f) // 80% chance caught
+        if (chance < 0.2f)
         {
-            int fine = Random.Range(100, 2501); // $100-$2500
-            gameManager.money -= fine;          // Money can go negative
-            gameManager.IncreaseAge();          // age +0.001
-            gameManager.UpdateUI();             // refresh UI after manual money change
-            gameManager.PrintMessage("Caught! You got arrested and fined $" + fine + ".");
+            HandleCaught();
         }
-        else // 20% chance success
+        else
         {
-            string[] stolenItems = { "computer", "phone", "car", "wallet", "backpack", "tv" };
-            string item = stolenItems[Random.Range(0, stolenItems.Length)];
-            int earned = Random.Range(0, 501); // $0-$500
-            gameManager.AddMoney(earned);      // adds money + age
-            gameManager.PrintMessage("You stole a " + item + " and received $" + earned + ".");
+            HandleSuccessfulSteal();
         }
     }
 
-    // ------------------- Other buttons -------------------
-    // You can implement BottleReturn, Scammer, Messenger in a similar way
-}
 
+    // ----------- SUCCESSFUL STEAL -----------
+    private void HandleSuccessfulSteal()
+    {
+        (string item, int min, int max) stolen = GetRandomStealItem();
+
+        int earned = Random.Range(stolen.min, stolen.max + 1);
+
+        gameManager.AddMoney(earned); // also increases age
+
+        gameManager.PrintMessage($"You stole a {stolen.item} and received ${earned}.");
+    }
+
+
+    // ----------- GETTING CAUGHT -----------
+    private void HandleCaught()
+    {
+        int fine = Random.Range(100, 2501); // $100–2500
+
+        gameManager.IncreaseAge(); // age must increase every click
+        gameManager.money -= fine;
+
+        gameManager.UpdateUI();
+
+        gameManager.PrintMessage($"Caught! You got arrested and fined ${fine}.");
+    }
+
+
+    // ----------- ITEM LIST WITH VALUES -----------
+    private (string item, int min, int max) GetRandomStealItem()
+    {
+        // Full item database
+        (string item, int min, int max, bool rare)[] items =
+        {
+            ("Wallet", 5, 100, false),
+            ("Computer", 100, 500, true),
+            ("Phone", 100, 350, true),
+            ("Watch", 25, 125, false),
+            ("Bottles", 0, 20, false),
+            ("Dust", 0, 0, true),
+            ("Toothbrush", 1, 3, false),
+            ("Gift Card", 10, 100, false),
+            ("Trash", 1, 4, false),
+            ("Designer Clothes", 75, 325, true),
+            ("Gold Picture Frame", 20, 30, false)
+        };
+
+        // Rare 20%, Common 80%
+        bool pickRare = (Random.value < 0.2f);
+
+        var pool = System.Array.FindAll(items, i => i.rare == pickRare);
+
+        // Fallback safety
+        if (pool.Length == 0) pool = items;
+
+        var chosen = pool[Random.Range(0, pool.Length)];
+
+        return (chosen.item, chosen.min, chosen.max);
+    }
+}
