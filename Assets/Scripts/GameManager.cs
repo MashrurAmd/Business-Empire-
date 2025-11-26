@@ -3,96 +3,136 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Global UI References")]
-    public Text moneyText;
-    public Text ageText;
-    public Text messageText;
-    public GameObject deathPanel;    // Assign your Death Panel here
-    public Button restartButton;     // Assign Restart button
+    [Header("UI References")]
+    public Text moneyText;    // assign in inspector
+    public Text ageText;      // assign in inspector
+    public Text messageText;  // assign in inspector
+    public GameObject deathPanel; // assign in inspector
+    public Button restartButton;  // assign in inspector
 
-    [Header("Player Stats")]
-    public int money = 0;
-    public float age = 18.000f;
-    public float maxAge = 20.000f;
-    public float ageIncrement = 0.001f;
-    public int minMoney = -5000;    // Minimum money before death
+    [Header("Stats")]
+    public float money = 0f;         // float-based money
+    public float age = 18.000f;      // starts at 18.000
+    public float maxAge = 20.000f;   // death at 20.000
+    public float ageIncrement = 0.001f; // per action
+    public float decimalThreshold = 0.365f; // when decimal reaches this -> increment integer
+    public float minMoneyBeforeDeath = -5000f;
+
+    [Header("State")]
+    public bool gameOver = false;
 
     void Start()
     {
-        deathPanel.SetActive(false);    // Hide death panel
-        restartButton.onClick.AddListener(RestartGame);
+        if (deathPanel != null) deathPanel.SetActive(false);
+        if (restartButton != null) restartButton.onClick.AddListener(RestartGame);
         UpdateUI();
     }
 
-    // Add money and increase age
-    public void AddMoney(int amount)
+    // Adds money (positive or negative) AND applies the per-action age increment.
+    public void AddMoney(float amount)
     {
+        if (gameOver) return;
+
         money += amount;
-        IncreaseAge();
+        ApplyAgeIncrement(ageIncrement);
         CheckDeath();
         UpdateUI();
     }
 
-    // Increase age by 0.001
+    // Public: increase age by one action (0.001)
     public void IncreaseAge()
     {
-        age += ageIncrement;
+        if (gameOver) return;
 
+        ApplyAgeIncrement(ageIncrement);
+        CheckDeath();
+        UpdateUI();
+    }
+
+    // Applies arbitrary age increment (can be multiple days * 0.001)
+    // Keeps decimal logic: when decimal part >= decimalThreshold => increment whole and reset decimals to .000
+    private void ApplyAgeIncrement(float increment)
+    {
+        age += increment;
+
+        // handle rollover when decimal part reaches threshold
         int whole = Mathf.FloorToInt(age);
         float decimalPart = age - whole;
 
-        if (decimalPart >= 0.365f)
+        if (decimalPart >= decimalThreshold)
         {
             whole += 1;
-            age = whole + 0.000f; // reset decimal
+            age = whole + 0.000f;
         }
+
+        // clamp to max
+        if (age > maxAge) age = maxAge;
+    }
+
+    // Called when an action should remove multiple life-days (e.g. bottle return loses 1-5 days)
+    // amount is integer number of days lost
+    public void AddLifeLoss(int amount)
+    {
+        if (gameOver) return;
+
+        if (amount <= 0) return;
+
+        // each "day" in your decimal system = ageIncrement (0.001)
+        float totalIncrement = amount * ageIncrement;
+        ApplyAgeIncrement(totalIncrement);
 
         CheckDeath();
         UpdateUI();
     }
 
-    // Print global messages
+    // Global message printer
     public void PrintMessage(string message)
     {
-        messageText.text = message;
+        if (messageText != null) messageText.text = message;
     }
 
-    // Update UI
+    // Update money and age UI
     public void UpdateUI()
     {
-        moneyText.text = "Money: $" + money;
-        ageText.text = "Age: " + age.ToString("F3");
+        if (moneyText != null) moneyText.text = "Money: $" + money.ToString("F2");
+        if (ageText != null) ageText.text = "Age: " + age.ToString("F3");
     }
 
-    // Check if player is dead
-    void CheckDeath()
+    // Death checks
+    private void CheckDeath()
     {
+        if (gameOver) return;
+
         if (age >= maxAge)
         {
-            Death("You have reached the end of your life.");
+            HandleDeath("You have reached the end of your life.");
         }
-        else if (money <= minMoney)
+        else if (money <= minMoneyBeforeDeath)
         {
-            Death("You went bankrupt!");
+            HandleDeath("You went bankrupt!");
         }
     }
 
-    // Handle death
-    void Death(string deathMessage)
+    // Trigger death state
+    private void HandleDeath(string deathMessage)
     {
+        gameOver = true;
         PrintMessage(deathMessage);
-        deathPanel.SetActive(true);
 
-        // Optional: disable other buttons in EarningPanelManager
-        // Or set a bool like 'gameOver = true' to stop clicks
+        if (deathPanel != null) deathPanel.SetActive(true);
+
+        // Optionally disable other UI interactions (EarningPanelManager should check gameOver)
     }
 
-    // Restart game
-    void RestartGame()
+    // Restart the whole game (reset stats)
+    public void RestartGame()
     {
-        money = 0;
+        gameOver = false;
+        money = 0f;
         age = 18.000f;
-        deathPanel.SetActive(false);
+
+        if (deathPanel != null) deathPanel.SetActive(false);
+
         PrintMessage("Game restarted!");
         UpdateUI();
     }
