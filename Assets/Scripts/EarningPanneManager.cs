@@ -35,59 +35,55 @@ public class EarningPanelManager : MonoBehaviour
     {
         if (!CanAct()) return;
 
-        float chance = Random.value; // 0 - 1
+        float chance = Random.value;
+        int bonus = gameManager.hasCup && gameManager.cupClicksRemaining > 0 ? 2 : 0;
+        if (gameManager.hasCup && gameManager.cupClicksRemaining > 0) gameManager.cupClicksRemaining--;
 
-        if (chance < 0.30f) // 30% positive
+        if (chance < 0.30f)
         {
-            int earned = Random.Range(0, 26); // $0–25
-            gameManager.AddMoney((float)earned);     // also increases age
+            int earned = Random.Range(0, 26) + bonus;
+            gameManager.AddMoney((float)earned);
             gameManager.PrintMessage($"You put your pride aside and received ${earned}.");
         }
         else
         {
-            gameManager.IncreaseAge(); // Add life cost (0.001)
+            gameManager.IncreaseAge();
             gameManager.PrintMessage("Nobody felt sorry for you, you made $0.");
         }
     }
-
 
     // ------------------- STEAL -------------------
     public void OnStealClicked()
     {
         if (!CanAct()) return;
 
-        float chance = Random.value;
+        float caughtChance = 0.5f;
+        if (gameManager.hasMask && gameManager.maskClicksRemaining > 0)
+        {
+            caughtChance = 0.4f;
+            gameManager.maskClicksRemaining--;
+        }
 
-        if (chance < 0.5f)
-        {
-            HandleCaught();
-        }
-        else
-        {
-            HandleSuccessfulSteal();
-        }
+        float chance = Random.value;
+        if (chance < caughtChance) HandleCaught();
+        else HandleSuccessfulSteal();
     }
 
     private void HandleSuccessfulSteal()
     {
         (string item, int min, int max) stolen = GetRandomStealItem();
-
         int earned = Random.Range(stolen.min, stolen.max + 1);
-
-        gameManager.AddMoney((float)earned); // also increases age
+        gameManager.AddMoney((float)earned);
         gameManager.PrintMessage($"You stole a {stolen.item} and received ${earned}.");
     }
 
     private void HandleCaught()
     {
-        int fine = Random.Range(100, 2501); // $100–2500 fine
-
-        // apply fine and age correctly through AddMoney and IncreaseAge to keep logic consistent
-        gameManager.AddMoney(-(float)fine); // this will also increase age by ageIncrement
+        int fine = Random.Range(100, 2501);
+        gameManager.AddMoney(-(float)fine);
         gameManager.PrintMessage($"Caught! You got arrested and fined ${fine}.");
     }
 
-    // item list with values and rarity
     private (string item, int min, int max) GetRandomStealItem()
     {
         (string item, int min, int max, bool rare)[] items =
@@ -96,7 +92,7 @@ public class EarningPanelManager : MonoBehaviour
             ("Computer", 100, 500, true),
             ("Phone", 100, 350, true),
             ("Watch", 25, 125, false),
-            ("Bottles", 1, 20, false), // using integer bottle counts here
+            ("Bottles", 1, 20, false),
             ("Dust", 0, 0, true),
             ("Toothbrush", 1, 3, false),
             ("Gift Card", 10, 100, false),
@@ -105,32 +101,26 @@ public class EarningPanelManager : MonoBehaviour
             ("Gold Picture Frame", 20, 30, false)
         };
 
-        bool pickRare = (Random.value < 0.2f); // 20% rare
+        bool pickRare = (Random.value < 0.2f);
         var pool = System.Array.FindAll(items, i => i.rare == pickRare);
         if (pool.Length == 0) pool = items;
-
         var chosen = pool[Random.Range(0, pool.Length)];
         return (chosen.item, chosen.min, chosen.max);
     }
 
-
     // ------------------- BOTTLE RETURN -------------------
-    // Each bottle returned gives $0.25 and costs 1-5 "days" in your decimal age system.
     public void OnBottleReturnClicked()
     {
         if (!CanAct()) return;
 
-        int lostLifeDays = Random.Range(1, 6); // 1–5 days
-        float earned = 0.25f;
+        int lostLifeDays = Random.Range(1, 6);
+        float earned = (gameManager.hasCart && gameManager.cartClicksRemaining > 0) ? 0.5f : 0.25f;
+        if (gameManager.hasCart && gameManager.cartClicksRemaining > 0) gameManager.cartClicksRemaining--;
 
-        // apply money (AddMoney handles age increment by one action)
-        // We want lifeLoss to be applied separately: AddLifeLoss applies multiple day increments
-        gameManager.AddMoney(earned);           // adds $0.25 and also increases age by 0.001
-        gameManager.AddLifeLoss(lostLifeDays); // then apply additional life loss (n * 0.001)
-
-        gameManager.PrintMessage($"You returned a bottle and earned $0.25 but lost {lostLifeDays} days of life.");
+        gameManager.AddMoney(earned);
+        gameManager.AddLifeLoss(lostLifeDays);
+        gameManager.PrintMessage($"You returned a bottle and earned ${earned} but lost {lostLifeDays} days of life.");
     }
-
 
     // ------------------- SCAMMER -------------------
     public void OnScammerClicked()
@@ -138,21 +128,19 @@ public class EarningPanelManager : MonoBehaviour
         if (!CanAct()) return;
 
         float chance = Random.value;
-
-        if (chance < 0.5f) // 50% caught
+        if (chance < 0.5f)
         {
-            int fine = Random.Range(0, 2001); // $0 - $2000
-            gameManager.AddMoney(-(float)fine); // negative money and increases age
+            int fine = Random.Range(0, 2001);
+            gameManager.AddMoney(-(float)fine);
             gameManager.PrintMessage($"Law enforcement found your location, you were fined ${fine}.");
         }
         else
         {
-            int earned = Random.Range(0, 1001); // $0 - $1000
+            int earned = Random.Range(0, 1001);
             gameManager.AddMoney((float)earned);
             gameManager.PrintMessage($"You scammed someone out of ${earned}.");
         }
     }
-
 
     // ------------------- MESSENGER -------------------
     public void OnMessengerClicked()
@@ -160,47 +148,37 @@ public class EarningPanelManager : MonoBehaviour
         if (!CanAct()) return;
 
         float chance = Random.value;
-
-        if (chance < 0.4f) // 40% failure
+        if (chance < 0.4f)
         {
             gameManager.IncreaseAge();
             gameManager.PrintMessage("You got lost, you made $0.");
         }
         else
         {
-            int earned = Random.Range(0, 201); // $0 - $200
+            int earned = Random.Range(0, 201);
             gameManager.AddMoney((float)earned);
-            gameManager.PrintMessage($"Successful delivery! You made ${earned}.");
+            gameManager.PrintMessage($"Successful delivery, you made ${earned}.");
         }
     }
 
-    // ------------------- BORROW (NEW) -------------------
+    // ------------------- BORROW -------------------
     public void OnBorrowClicked()
     {
         if (!CanAct()) return;
 
-        float chance = Random.value;
-
-        if (chance < 0.80f) // NEGATIVE — 80% chance
+        float chance = gameManager.hasFlower ? 0.1f : 0.8f; // Flower effect reduces fail chance
+        if (Random.value < chance)
         {
-            string[] responses = {
-                "You didn't receive anything.",
-                "Your family has shunned you."
-            };
-
+            string[] responses = { "You didn't receive anything.", "Your family has shunned you." };
             string response = responses[Random.Range(0, responses.Length)];
-            gameManager.IncreaseAge(); // life cost
+            gameManager.IncreaseAge();
             gameManager.PrintMessage(response);
         }
-        else // POSITIVE — 20% chance
+        else
         {
             int earned = Random.Range(0, 201);
             gameManager.AddMoney((float)earned);
             gameManager.PrintMessage($"Enabling is what family is for, you received ${earned}.");
         }
     }
-
-
-
-
 }

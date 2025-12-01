@@ -26,12 +26,22 @@ public class GameManager : MonoBehaviour
     public float lockerUpkeepTimer = 0f;
     public float lockerUpkeepInterval = 600f; // 10 mins
 
-    // ----------------- 🔥 ROBBERY SYSTEM 🔥 -----------------
+    [Header("Enhancement Effects")]
+    public bool hasMask = false;
+    public int maskClicksRemaining = 0;
+
+    public bool hasCup = false;
+    public int cupClicksRemaining = 0;
+
+    public bool hasFlower = false;
+
+    public bool hasCart = false;
+    public int cartClicksRemaining = 0;
+
     [Header("Robbery System")]
     public bool robberyEnabled = true;
     private float robberyTimer = 0f;
     private float nextRobberyTime = 0f;
-
 
     void Start()
     {
@@ -39,10 +49,8 @@ public class GameManager : MonoBehaviour
         if (restartButton != null) restartButton.onClick.AddListener(RestartGame);
 
         UpdateUI();
-        ScheduleNextRobbery(); // <─ sets first robbery event
+        ScheduleNextRobbery();
     }
-
-
 
     // ----------------- MONEY + AGE SYSTEM -----------------
     public void AddMoney(float amount)
@@ -91,7 +99,6 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
-
     // ----------------- UI + DEATH SYSTEM -----------------
     public void PrintMessage(string msg)
     {
@@ -126,14 +133,22 @@ public class GameManager : MonoBehaviour
         money = 0f;
         age = 18.000f;
 
+        // Reset all enhancements
+        hasLocker = false;
+        hasMask = false;
+        maskClicksRemaining = 0;
+        hasCup = false;
+        cupClicksRemaining = 0;
+        hasFlower = false;
+        hasCart = false;
+        cartClicksRemaining = 0;
+
         if (deathPanel != null) deathPanel.SetActive(false);
 
         PrintMessage("Game restarted!");
         UpdateUI();
         ScheduleNextRobbery();
     }
-
-
 
     // ----------------- UPDATE LOOP -----------------
     void Update()
@@ -150,7 +165,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // ----------------- AUTO ROBBERY SYSTEM -----------------
+        // Auto robbery
         if (robberyEnabled && !gameOver)
         {
             robberyTimer += Time.deltaTime;
@@ -164,12 +179,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
-    // ----------------- ROBBERY CORE SYSTEM -----------------
+    // ----------------- ROBBERY -----------------
     private void ScheduleNextRobbery()
     {
-        nextRobberyTime = Random.Range( 10f, 30f); // 5–15 minutes
+        nextRobberyTime = Random.Range(300f, 900f); // 5–15 minutes in seconds
     }
 
     public void TriggerRobbery()
