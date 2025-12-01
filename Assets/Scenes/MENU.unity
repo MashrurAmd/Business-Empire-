@@ -12396,6 +12396,7 @@ MonoBehaviour:
   bottleReturnButton: {fileID: 45573442}
   scammerButton: {fileID: 1290242467}
   messengerButton: {fileID: 667982227}
+  borrowButton: {fileID: 1590444492}
 --- !u!1 &458608967
 GameObject:
   m_ObjectHideFlags: 0
@@ -40174,7 +40175,7 @@ GameObject:
   - component: {fileID: 1590444493}
   - component: {fileID: 1590444492}
   m_Layer: 5
-  m_Name: messenger button
+  m_Name: borrow button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48137,7 +48138,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DELIVERS ACCROSS THE CITY
+  m_Text: WHAT IS FAMILY FOR
 --- !u!222 &1904294816
 CanvasRenderer:
   m_ObjectHideFlags: 0

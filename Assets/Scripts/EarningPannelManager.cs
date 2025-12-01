@@ -12,6 +12,7 @@ public class EarningPanelManager : MonoBehaviour
     public Button bottleReturnButton;
     public Button scammerButton;
     public Button messengerButton;
+    public Button borrowButton;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class EarningPanelManager : MonoBehaviour
         if (bottleReturnButton != null) bottleReturnButton.onClick.AddListener(OnBottleReturnClicked);
         if (scammerButton != null) scammerButton.onClick.AddListener(OnScammerClicked);
         if (messengerButton != null) messengerButton.onClick.AddListener(OnMessengerClicked);
+        if (borrowButton != null) borrowButton.onClick.AddListener(OnBorrowClicked);
     }
 
     bool CanAct()
@@ -171,4 +173,34 @@ public class EarningPanelManager : MonoBehaviour
             gameManager.PrintMessage($"Successful delivery! You made ${earned}.");
         }
     }
+
+    // ------------------- BORROW (NEW) -------------------
+    public void OnBorrowClicked()
+    {
+        if (!CanAct()) return;
+
+        float chance = Random.value;
+
+        if (chance < 0.80f) // NEGATIVE — 80% chance
+        {
+            string[] responses = {
+                "You didn't receive anything.",
+                "Your family has shunned you."
+            };
+
+            string response = responses[Random.Range(0, responses.Length)];
+            gameManager.IncreaseAge(); // life cost
+            gameManager.PrintMessage(response);
+        }
+        else // POSITIVE — 20% chance
+        {
+            int earned = Random.Range(0, 201);
+            gameManager.AddMoney((float)earned);
+            gameManager.PrintMessage($"Enabling is what family is for, you received ${earned}.");
+        }
+    }
+
+
+
+
 }
