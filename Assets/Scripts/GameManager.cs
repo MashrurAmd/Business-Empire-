@@ -4,33 +4,47 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [Header("UI References")]
-    public Text moneyText;    // assign in inspector
-    public Text ageText;      // assign in inspector
-    public Text messageText;  // assign in inspector
-    public GameObject deathPanel; // assign in inspector
-    public Button restartButton;  // assign in inspector
+    public Text moneyText;
+    public Text ageText;
+    public Text messageText;
+    public GameObject deathPanel;
+    public Button restartButton;
 
     [Header("Stats")]
-    public float money = 0f;         // float-based money
-    public float age = 18.000f;      // starts at 18.000
-    public float maxAge = 20.000f;   // death at 20.000
-    public float ageIncrement = 0.001f; // per action
-    public float decimalThreshold = 0.365f; // when decimal reaches this -> increment integer
+    public float money = 0f;
+    public float age = 18.000f;
+    public float maxAge = 20.000f;
+    public float ageIncrement = 0.001f;
+    public float decimalThreshold = 0.365f;
     public float minMoneyBeforeDeath = -5000f;
 
     [Header("State")]
     public bool gameOver = false;
 
+    [Header("Enhancements")]
+    public bool hasLocker = false;
+    public float lockerUpkeepTimer = 0f;
+    public float lockerUpkeepInterval = 600f; // 10 mins
+
+    // ----------------- 🔥 ROBBERY SYSTEM 🔥 -----------------
+    [Header("Robbery System")]
+    public bool robberyEnabled = true;
+    private float robberyTimer = 0f;
+    private float nextRobberyTime = 0f;
+
+
     void Start()
     {
         if (deathPanel != null) deathPanel.SetActive(false);
         if (restartButton != null) restartButton.onClick.AddListener(RestartGame);
+
         UpdateUI();
-
-
+        ScheduleNextRobbery(); // <─ sets first robbery event
     }
 
-    // Adds money (positive or negative) AND applies the per-action age increment.
+
+
+    // ----------------- MONEY + AGE SYSTEM -----------------
     public void AddMoney(float amount)
     {
         if (gameOver) return;
@@ -41,7 +55,6 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
-    // Public: increase age by one action (0.001)
     public void IncreaseAge()
     {
         if (gameOver) return;
@@ -51,13 +64,10 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
-    // Applies arbitrary age increment (can be multiple days * 0.001)
-    // Keeps decimal logic: when decimal part >= decimalThreshold => increment whole and reset decimals to .000
     private void ApplyAgeIncrement(float increment)
     {
         age += increment;
 
-        // handle rollover when decimal part reaches threshold
         int whole = Mathf.FloorToInt(age);
         float decimalPart = age - whole;
 
@@ -67,19 +77,13 @@ public class GameManager : MonoBehaviour
             age = whole + 0.000f;
         }
 
-        // clamp to max
         if (age > maxAge) age = maxAge;
     }
 
-    // Called when an action should remove multiple life-days (e.g. bottle return loses 1-5 days)
-    // amount is integer number of days lost
     public void AddLifeLoss(int amount)
     {
-        if (gameOver) return;
+        if (gameOver || amount <= 0) return;
 
-        if (amount <= 0) return;
-
-        // each "day" in your decimal system = ageIncrement (0.001)
         float totalIncrement = amount * ageIncrement;
         ApplyAgeIncrement(totalIncrement);
 
@@ -87,46 +91,35 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
-    // Global message printer
-    public void PrintMessage(string message)
+
+    // ----------------- UI + DEATH SYSTEM -----------------
+    public void PrintMessage(string msg)
     {
-        if (messageText != null) messageText.text = message;
+        if (messageText != null) messageText.text = msg;
     }
 
-    // Update money and age UI
     public void UpdateUI()
     {
-        if (moneyText != null) moneyText.text = "Money: $" + money.ToString("F2");
-        if (ageText != null) ageText.text = "Age: " + age.ToString("F3");
+        if (moneyText) moneyText.text = "Money: $" + money.ToString("F2");
+        if (ageText) ageText.text = "Age: " + age.ToString("F3");
     }
 
-    // Death checks
     private void CheckDeath()
     {
         if (gameOver) return;
 
-        if (age >= maxAge)
-        {
-            HandleDeath("You have reached the end of your life.");
-        }
-        else if (money <= minMoneyBeforeDeath)
-        {
-            HandleDeath("You went bankrupt!");
-        }
+        if (age >= maxAge) HandleDeath("You have reached the end of your life.");
+        if (money <= minMoneyBeforeDeath) HandleDeath("You went bankrupt!");
     }
 
-    // Trigger death state
-    private void HandleDeath(string deathMessage)
+    private void HandleDeath(string msg)
     {
         gameOver = true;
-        PrintMessage(deathMessage);
+        PrintMessage(msg);
 
         if (deathPanel != null) deathPanel.SetActive(true);
-
-        // Optionally disable other UI interactions (EarningPanelManager should check gameOver)
     }
 
-    // Restart the whole game (reset stats)
     public void RestartGame()
     {
         gameOver = false;
@@ -137,5 +130,59 @@ public class GameManager : MonoBehaviour
 
         PrintMessage("Game restarted!");
         UpdateUI();
+        ScheduleNextRobbery();
+    }
+
+
+
+    // ----------------- UPDATE LOOP -----------------
+    void Update()
+    {
+        // Locker upkeep every 10 min
+        if (hasLocker)
+        {
+            lockerUpkeepTimer += Time.deltaTime;
+            if (lockerUpkeepTimer >= lockerUpkeepInterval)
+            {
+                lockerUpkeepTimer = 0f;
+                AddMoney(-1f);
+                PrintMessage("Locker upkeep cost -$1");
+            }
+        }
+
+        // ----------------- AUTO ROBBERY SYSTEM -----------------
+        if (robberyEnabled && !gameOver)
+        {
+            robberyTimer += Time.deltaTime;
+
+            if (robberyTimer >= nextRobberyTime)
+            {
+                robberyTimer = 0f;
+                TriggerRobbery();
+                ScheduleNextRobbery();
+            }
+        }
+    }
+
+
+
+    // ----------------- ROBBERY CORE SYSTEM -----------------
+    private void ScheduleNextRobbery()
+    {
+        nextRobberyTime = Random.Range( 10f, 30f); // 5–15 minutes
+    }
+
+    public void TriggerRobbery()
+    {
+        if (hasLocker)
+        {
+            PrintMessage("Robbers tried to steal from you but found nothing.");
+        }
+        else
+        {
+            money = 0;
+            UpdateUI();
+            PrintMessage("You were robbed! All money is gone.");
+        }
     }
 }
