@@ -21,30 +21,31 @@ public class GameManager : MonoBehaviour
     [Header("State")]
     public bool gameOver = false;
 
-    [Header("Enhancements")]
+    // ===== ENHANCEMENTS =====
     public bool hasLocker = false;
     public float lockerUpkeepTimer = 0f;
-    public float lockerUpkeepInterval = 600f; // 10 mins
+    public float lockerUpkeepInterval = 600f;
 
-    // ----------------- 🔥 ROBBERY SYSTEM 🔥 -----------------
-    [Header("Robbery System")]
-    public bool robberyEnabled = true;
-    private float robberyTimer = 0f;
-    private float nextRobberyTime = 0f;
+    public bool hasMask = false;
+    public int maskUses = 0;
+
+    public bool hasCup = false;
+    public int cupUses = 0;
+
+    public bool hasFlower = false;
+
+    public bool hasCart = false;
+    public int cartUses = 0;
 
 
     void Start()
     {
-        if (deathPanel != null) deathPanel.SetActive(false);
         if (restartButton != null) restartButton.onClick.AddListener(RestartGame);
-
+        if (deathPanel != null) deathPanel.SetActive(false);
         UpdateUI();
-        ScheduleNextRobbery(); // <─ sets first robbery event
     }
 
-
-
-    // ----------------- MONEY + AGE SYSTEM -----------------
+    // ===== MONEY =====
     public void AddMoney(float amount)
     {
         if (gameOver) return;
@@ -64,125 +65,90 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
+    // Converts decimal age to integer when threshold reached
     private void ApplyAgeIncrement(float increment)
     {
         age += increment;
-
         int whole = Mathf.FloorToInt(age);
-        float decimalPart = age - whole;
+        float dec = age - whole;
 
-        if (decimalPart >= decimalThreshold)
+        if (dec >= decimalThreshold)
         {
             whole += 1;
             age = whole + 0.000f;
         }
-
         if (age > maxAge) age = maxAge;
     }
 
     public void AddLifeLoss(int amount)
     {
-        if (gameOver || amount <= 0) return;
+        if (amount <= 0 || gameOver) return;
 
-        float totalIncrement = amount * ageIncrement;
-        ApplyAgeIncrement(totalIncrement);
-
+        float total = amount * ageIncrement;
+        ApplyAgeIncrement(total);
         CheckDeath();
         UpdateUI();
     }
 
-
-    // ----------------- UI + DEATH SYSTEM -----------------
-    public void PrintMessage(string msg)
-    {
-        if (messageText != null) messageText.text = msg;
-    }
+    // ===== BASIC UI =====
+    public void PrintMessage(string msg) => messageText.text = msg;
 
     public void UpdateUI()
     {
-        if (moneyText) moneyText.text = "Money: $" + money.ToString("F2");
-        if (ageText) ageText.text = "Age: " + age.ToString("F3");
+        moneyText.text = $"Money: ${money:F2}";
+        ageText.text = $"Age: {age:F3}";
     }
 
+    // ===== DEATH =====
     private void CheckDeath()
     {
-        if (gameOver) return;
-
-        if (age >= maxAge) HandleDeath("You have reached the end of your life.");
-        if (money <= minMoneyBeforeDeath) HandleDeath("You went bankrupt!");
+        if (age >= maxAge) HandleDeath("You lived your life fully.");
+        else if (money <= minMoneyBeforeDeath) HandleDeath("You died broke.");
     }
 
     private void HandleDeath(string msg)
     {
         gameOver = true;
         PrintMessage(msg);
-
-        if (deathPanel != null) deathPanel.SetActive(true);
+        deathPanel.SetActive(true);
     }
 
     public void RestartGame()
     {
-        gameOver = false;
         money = 0f;
         age = 18.000f;
+        gameOver = false;
 
-        if (deathPanel != null) deathPanel.SetActive(false);
+        // reset everything
+        hasLocker = false;
+        hasMask = false;
+        hasCup = false;
+        hasFlower = false;
+        hasCart = false;
 
-        PrintMessage("Game restarted!");
+        deathPanel.SetActive(false);
+        PrintMessage("Restarted.");
         UpdateUI();
-        ScheduleNextRobbery();
     }
 
+    // ===== LOCKER ROBBERY PROTECTION =====
+    public void TriggerRobbery()
+    {
+        if (hasLocker) PrintMessage("Thieves found nothing — locker protected you.");
+        else { money = 0; UpdateUI(); PrintMessage("You got robbed. Lost everything."); }
+    }
 
-
-    // ----------------- UPDATE LOOP -----------------
     void Update()
     {
-        // Locker upkeep every 10 min
         if (hasLocker)
         {
             lockerUpkeepTimer += Time.deltaTime;
             if (lockerUpkeepTimer >= lockerUpkeepInterval)
             {
-                lockerUpkeepTimer = 0f;
+                lockerUpkeepTimer = 0;
                 AddMoney(-1f);
-                PrintMessage("Locker upkeep cost -$1");
+                PrintMessage("Locker upkeep cost -$1.");
             }
-        }
-
-        // ----------------- AUTO ROBBERY SYSTEM -----------------
-        if (robberyEnabled && !gameOver)
-        {
-            robberyTimer += Time.deltaTime;
-
-            if (robberyTimer >= nextRobberyTime)
-            {
-                robberyTimer = 0f;
-                TriggerRobbery();
-                ScheduleNextRobbery();
-            }
-        }
-    }
-
-
-
-    // ----------------- ROBBERY CORE SYSTEM -----------------
-    private void ScheduleNextRobbery()
-    {
-        nextRobberyTime = Random.Range( 10f, 30f); // 5–15 minutes
-    }
-
-    public void TriggerRobbery()
-    {
-        if (hasLocker)
-        {
-            PrintMessage("Robbers tried to steal from you but found nothing.");
-        }
-        else
-        {
-            money = 0;
-            UpdateUI();
-            PrintMessage("You were robbed! All money is gone.");
         }
     }
 }
