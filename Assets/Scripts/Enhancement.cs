@@ -5,73 +5,33 @@ public class EnhancementPanelManager : MonoBehaviour
 {
     public GameManager gameManager;
 
-    public Button lockerBtn, maskBtn, cupBtn, flowerBtn, cartBtn;
+    [Header("Enhancement Buttons")]
+    public Button lockerButton;
+    // add more enhancements later...
 
     void Start()
     {
-        lockerBtn.onClick.AddListener(BuyLocker);
-        maskBtn.onClick.AddListener(BuyMask);
-        cupBtn.onClick.AddListener(BuyCup);
-        flowerBtn.onClick.AddListener(BuyFlower);
-        cartBtn.onClick.AddListener(BuyCart);
+        lockerButton.onClick.AddListener(OnLockerPurchase);
     }
 
-    void BuyLocker()
+    // ===================== LOCKER PURCHASE FUNCTION =====================
+    public void OnLockerPurchase()
     {
-        if (gameManager.money >= 250 && !gameManager.hasLocker)
+        if (gameManager.hasLocker)
         {
-            gameManager.money -= 250;
-            gameManager.hasLocker = true;
-            gameManager.PrintMessage("You purchased a locker — you are protected from robbery.");
-            gameManager.UpdateUI();
+            gameManager.PrintMessage("You already own a locker.");
+            return;
         }
-        else gameManager.PrintMessage("Not enough money or you already own a locker.");
-    }
 
-    void BuyMask()
-    {
-        if (gameManager.money >= 50)
+        if (gameManager.money < 250)
         {
-            gameManager.money -= 50;
-            gameManager.hasMask = true;
-            gameManager.maskUses = Random.Range(15, 26);
-            gameManager.PrintMessage($"Mask purchased — identity hidden for {gameManager.maskUses} steals.");
-            gameManager.UpdateUI();
+            gameManager.PrintMessage("You do not have enough money to buy a locker ($250 required).");
+            return;
         }
-    }
 
-    void BuyCup()
-    {
-        if (gameManager.money >= 50)
-        {
-            gameManager.money -= 50;
-            gameManager.hasCup = true;
-            gameManager.cupUses = Random.Range(45, 61);
-            gameManager.PrintMessage($"Cup purchased — begging income increased for {gameManager.cupUses} uses.");
-            gameManager.UpdateUI();
-        }
-    }
+        gameManager.AddMoney(-250); // deduct price
+        gameManager.hasLocker = true;
 
-    void BuyFlower()
-    {
-        if (gameManager.money >= 50 && !gameManager.hasFlower)
-        {
-            gameManager.money -= 50;
-            gameManager.hasFlower = true;
-            gameManager.PrintMessage("You purchased flowers — borrow success increased by +10% permanently.");
-            gameManager.UpdateUI();
-        }
-    }
-
-    void BuyCart()
-    {
-        if (gameManager.money >= 10)
-        {
-            gameManager.money -= 10;
-            gameManager.hasCart = true;
-            gameManager.cartUses = Random.Range(30, 46);
-            gameManager.PrintMessage($"Cart purchased — bottle return boosted for {gameManager.cartUses} uses.");
-            gameManager.UpdateUI();
-        }
+        gameManager.PrintMessage("You purchased a locker, your items will be secured.");
     }
 }
