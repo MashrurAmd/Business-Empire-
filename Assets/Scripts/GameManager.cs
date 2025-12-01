@@ -23,20 +23,21 @@ public class GameManager : MonoBehaviour
 
     [Header("Enhancements")]
     public bool hasLocker = false;
-    public float lockerUpkeepTimer = 0f;
-    public float lockerUpkeepInterval = 600f; // 10 mins
-
-    [Header("Enhancement Effects")]
     public bool hasMask = false;
-    public int maskClicksRemaining = 0;
-
     public bool hasCup = false;
-    public int cupClicksRemaining = 0;
-
     public bool hasFlower = false;
-
     public bool hasCart = false;
+
+    public float lockerUpkeepTimer = 0f;
+    public float lockerUpkeepInterval = 600f; // 10 min
+    public int maskClicksRemaining = 0;
+    public int cupClicksRemaining = 0;
     public int cartClicksRemaining = 0;
+
+    [Header("Resources Unlocks")]
+    public bool hasCartboard = false;
+    public bool hasKnife = false;
+    public bool hasPhone = false;
 
     [Header("Robbery System")]
     public bool robberyEnabled = true;
@@ -133,14 +134,18 @@ public class GameManager : MonoBehaviour
         money = 0f;
         age = 18.000f;
 
-        // Reset all enhancements
         hasLocker = false;
         hasMask = false;
-        maskClicksRemaining = 0;
         hasCup = false;
-        cupClicksRemaining = 0;
         hasFlower = false;
         hasCart = false;
+
+        hasCartboard = false;
+        hasKnife = false;
+        hasPhone = false;
+
+        maskClicksRemaining = 0;
+        cupClicksRemaining = 0;
         cartClicksRemaining = 0;
 
         if (deathPanel != null) deathPanel.SetActive(false);
@@ -165,11 +170,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // Auto robbery
+        // Auto Robbery
         if (robberyEnabled && !gameOver)
         {
             robberyTimer += Time.deltaTime;
-
             if (robberyTimer >= nextRobberyTime)
             {
                 robberyTimer = 0f;
@@ -182,7 +186,7 @@ public class GameManager : MonoBehaviour
     // ----------------- ROBBERY -----------------
     private void ScheduleNextRobbery()
     {
-        nextRobberyTime = Random.Range(300f, 900f); // 5–15 minutes in seconds
+        nextRobberyTime = Random.Range(300f, 900f); // 5–15 minutes
     }
 
     public void TriggerRobbery()
