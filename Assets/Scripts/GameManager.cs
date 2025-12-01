@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
         if (deathPanel != null) deathPanel.SetActive(false);
         if (restartButton != null) restartButton.onClick.AddListener(RestartGame);
         UpdateUI();
+
+
     }
 
     // Adds money (positive or negative) AND applies the per-action age increment.
