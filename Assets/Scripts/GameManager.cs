@@ -73,6 +73,12 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
+    public void IncreaseMaxAge()
+    {
+        maxAge += 0.001f;
+        Debug.Log(maxAge);
+    }
+
     private void ApplyAgeIncrement(float increment)
     {
         age += increment;
