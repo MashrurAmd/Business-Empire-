@@ -3715,9 +3715,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+9 MONTHS
-
-'
+  m_Text: PRAY AT HOME
 --- !u!222 &107843669
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7856,7 +7854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 4250}
+  m_AnchoredPosition: {x: 0, y: 7182}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &239790871
@@ -8219,7 +8217,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: THE WORLD
+  m_Text: TWINS
 --- !u!222 &245445806
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11079,9 +11077,9 @@ RectTransform:
   - {fileID: 284457256}
   m_Father: {fileID: 239790870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 481, y: -5650}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &364182152
@@ -17236,9 +17234,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+9 MONTHS
-
-'
+  m_Text: EYE EXAM
 --- !u!222 &539388458
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18108,8 +18104,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -173.49998, y: -231}
-  m_SizeDelta: {x: 447, y: 91.3534}
+  m_AnchoredPosition: {x: -108.79537, y: -231}
+  m_SizeDelta: {x: 576.4092, y: 91.3534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &592261841
 MonoBehaviour:
@@ -18144,7 +18140,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: WEEKEND
+  m_Text: ENGAGEMENT
 --- !u!222 &592261842
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19588,9 +19584,9 @@ RectTransform:
   - {fileID: 2076931382}
   m_Father: {fileID: 239790870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 481, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &624554470
@@ -20137,8 +20133,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223.49998, y: -335}
-  m_SizeDelta: {x: 347, y: 91.3534}
+  m_AnchoredPosition: {x: -209.3646, y: -335}
+  m_SizeDelta: {x: 375.2708, y: 91.3534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &647583012
 MonoBehaviour:
@@ -20173,9 +20169,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+6 MONTHS
-
-'
+  m_Text: TEETH CLEANING
 --- !u!222 &647583013
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22365,7 +22359,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EUROPE
+  m_Text: MARRIAGE
 --- !u!222 &698993896
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26428,8 +26422,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223.49998, y: -335}
-  m_SizeDelta: {x: 347, y: 91.3534}
+  m_AnchoredPosition: {x: -64.891, y: -335}
+  m_SizeDelta: {x: 664.22, y: 91.3534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &845404026
 MonoBehaviour:
@@ -26464,9 +26458,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+3 MONTHS
-
-'
+  m_Text: SEE ER NURSE
 --- !u!222 &845404027
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26873,7 +26865,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DAYTRIP
+  m_Text: DATE
 --- !u!222 &866256405
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27099,7 +27091,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
@@ -27110,7 +27102,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: WEEKEND
+  m_Text: MEDITATE
 --- !u!222 &873047938
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28095,9 +28087,9 @@ RectTransform:
   - {fileID: 731876692}
   m_Father: {fileID: 239790870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 481, y: -4250}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &911119958
@@ -30566,9 +30558,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+12 MONTHS
-
-'
+  m_Text: TEETH CLEANING
 --- !u!222 &963584060
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30848,8 +30838,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.93892, y: -231}
-  m_SizeDelta: {x: 760.1221, y: 91.3534}
+  m_AnchoredPosition: {x: -47.00886, y: -231}
+  m_SizeDelta: {x: 699.9725, y: 91.3534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &973152288
 MonoBehaviour:
@@ -30873,7 +30863,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -30884,7 +30874,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: THE WORLD
+  m_Text: SPRITUAL RETREAT
 --- !u!222 &973152289
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31081,8 +31071,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223.49998, y: -335}
-  m_SizeDelta: {x: 347, y: 91.3534}
+  m_AnchoredPosition: {x: -106.62858, y: -335}
+  m_SizeDelta: {x: 580.7429, y: 91.3534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &976921812
 MonoBehaviour:
@@ -31117,9 +31107,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+12 MONTHS
-
-'
+  m_Text: GO TO HOUSE OF WORSHIP
 --- !u!222 &976921813
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31162,8 +31150,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223.49998, y: -335}
-  m_SizeDelta: {x: 347, y: 91.3534}
+  m_AnchoredPosition: {x: -108.18688, y: -335}
+  m_SizeDelta: {x: 577.6263, y: 91.3534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979862382
 MonoBehaviour:
@@ -31198,9 +31186,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+24 MONTHS
-
-'
+  m_Text: GO TO A SPRITUAL RETRETE
 --- !u!222 &979862383
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31243,8 +31229,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223.49998, y: -335}
-  m_SizeDelta: {x: 347, y: 91.3534}
+  m_AnchoredPosition: {x: -110.416725, y: -335}
+  m_SizeDelta: {x: 573.1666, y: 91.3534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &983296019
 MonoBehaviour:
@@ -31279,9 +31265,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+24 MONTHS
-
-'
+  m_Text: PHYSICAL EXAM
 --- !u!222 &983296020
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31525,9 +31509,9 @@ RectTransform:
   - {fileID: 756504548}
   m_Father: {fileID: 239790870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 481, y: -1450}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &994960977
@@ -35012,9 +34996,9 @@ RectTransform:
   - {fileID: 2063191628}
   m_Father: {fileID: 239790870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 481, y: -7050}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1107311152
@@ -35327,7 +35311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BORA BORA
+  m_Text: BABY
 --- !u!222 &1113817479
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41501,7 +41485,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: THE WORLD
+  m_Text: HOME VISIT
 --- !u!222 &1345857647
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -45994,9 +45978,9 @@ RectTransform:
   - {fileID: 403630258}
   m_Father: {fileID: 239790870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 481, y: -8450}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1496012528
@@ -49425,8 +49409,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 147, y: 26}
-  m_SizeDelta: {x: 433.09, y: 125.4791}
+  m_AnchoredPosition: {x: 164.24, y: 26}
+  m_SizeDelta: {x: 665.3, y: 125.4791}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627509822
 MonoBehaviour:
@@ -49450,10 +49434,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 100
+    m_FontSize: 90
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 100
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -49461,7 +49445,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TRAVEL
+  m_Text: SPIRITUALITY
 --- !u!222 &1627509823
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -49974,7 +49958,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EUROPE
+  m_Text: OPTIMETRIST
 --- !u!222 &1647196357
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -51302,7 +51286,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
@@ -51313,7 +51297,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EUROPE
+  m_Text: PRAY
 --- !u!222 &1687345225
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -52231,9 +52215,9 @@ RectTransform:
   - {fileID: 514208106}
   m_Father: {fileID: 239790870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 481, y: -2850}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1714393756
@@ -53822,7 +53806,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BORA BORA
+  m_Text: CLINIC
 --- !u!222 &1766169655
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -56107,8 +56091,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -153.74997, y: -231}
-  m_SizeDelta: {x: 486.5, y: 91.3534}
+  m_AnchoredPosition: {x: 58.1768, y: -231}
+  m_SizeDelta: {x: 910.3536, y: 91.3534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1846649516
 MonoBehaviour:
@@ -56132,7 +56116,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
@@ -56143,7 +56127,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BORA BORA
+  m_Text: HOUSE OF WORSHIP
 --- !u!222 &1846649517
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -60621,8 +60605,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223.49998, y: -335}
-  m_SizeDelta: {x: 347, y: 91.3534}
+  m_AnchoredPosition: {x: -153.75, y: -335}
+  m_SizeDelta: {x: 486.5, y: 91.3534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983598797
 MonoBehaviour:
@@ -60657,9 +60641,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+6 MONTHS
-
-'
+  m_Text: MEDIDATE AT HOME
 --- !u!222 &1983598798
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -61209,7 +61191,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DAYTRIP
+  m_Text: SPIRITUAL APP
 --- !u!222 &1999292284
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -64167,8 +64149,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223.49998, y: -335}
-  m_SizeDelta: {x: 347, y: 91.3534}
+  m_AnchoredPosition: {x: -117.750015, y: -335}
+  m_SizeDelta: {x: 558.5, y: 91.3534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2142858046
 MonoBehaviour:
@@ -64203,9 +64185,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+3 MONTHS
-
-'
+  m_Text: DOWNLOAD SPRITUAL APP
 --- !u!222 &2142858047
 CanvasRenderer:
   m_ObjectHideFlags: 0
