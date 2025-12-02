@@ -202,4 +202,13 @@ public class GameManager : MonoBehaviour
             PrintMessage("You were robbed! All money is gone.");
         }
     }
+
+
+    public void IncreaseMaxAge(float amount)
+    {
+        maxAge += amount;
+        Debug.Log("Max Age increased by " + amount + ". New Max Age: " + maxAge);
+    }
+
+
 }
