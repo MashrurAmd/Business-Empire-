@@ -116,16 +116,16 @@ public class HomePanelManager : MonoBehaviour
     private void IncreaseLife(float amount)
     {
         // Uses the GameManager’s existing ApplyAgeIncrement logic
-        gameManager.age += amount;
+        gameManager.maxAge += amount;
 
         // Ensure the decimal rollover logic + death checks are applied
-        int whole = Mathf.FloorToInt(gameManager.age);
-        float decimalPart = gameManager.age - whole;
+        int whole = Mathf.FloorToInt(gameManager.maxAge);
+        float decimalPart = gameManager.maxAge - whole;
 
         if (decimalPart >= gameManager.decimalThreshold)
         {
             whole += 1;
-            gameManager.age = whole + 0.000f;
+            gameManager.maxAge = whole + 0.000f;
         }
 
         if (gameManager.age > gameManager.maxAge)
