@@ -5,7 +5,6 @@ public class HomePanelManager : MonoBehaviour
 {
     [Header("Game Manager Reference")]
     public GameManager gameManager;
-    public GameObject gameManagerObject;
 
     [Header("Food Buttons")]
     public Button homeCookingButton;
@@ -41,7 +40,7 @@ public class HomePanelManager : MonoBehaviour
         }
 
         gameManager.AddMoney(-cost);
-        IncreaseLife(0.001f);
+        gameManager.IncreaseMaxAge(0.001f);
         gameManager.PrintMessage("You cooked a meal.");
     }
 
@@ -58,7 +57,7 @@ public class HomePanelManager : MonoBehaviour
         }
 
         gameManager.AddMoney(-cost);
-        IncreaseLife(0.005f);
+        gameManager.IncreaseMaxAge(0.005f);
         gameManager.PrintMessage("You ordered from your favorite spot.");
     }
 
@@ -75,7 +74,7 @@ public class HomePanelManager : MonoBehaviour
         }
 
         gameManager.AddMoney(-cost);
-        IncreaseLife(0.01f);
+        gameManager.IncreaseMaxAge(0.01f);
         gameManager.PrintMessage("Your meals arrived at your door, ready to eat!");
     }
 
@@ -92,7 +91,7 @@ public class HomePanelManager : MonoBehaviour
         }
 
         gameManager.AddMoney(-cost);
-        IncreaseLife(0.03f);
+        gameManager.IncreaseMaxAge(0.03f);
         gameManager.PrintMessage("This is the high life, preped meals for all occasions.");
     }
 
@@ -109,29 +108,7 @@ public class HomePanelManager : MonoBehaviour
         }
 
         gameManager.AddMoney(-cost);
-        IncreaseLife(0.1f);
+        gameManager.IncreaseMaxAge(0.1f);
         gameManager.PrintMessage("Eat until your heart contents.");
-    }
-
-    // -------------------- LIFE INCREASE LOGIC --------------------
-    private void IncreaseLife(float amount)
-    {
-        // Uses the GameManager’s existing ApplyAgeIncrement logic
-        gameManager.age += amount;
-
-        // Ensure the decimal rollover logic + death checks are applied
-        int whole = Mathf.FloorToInt(gameManager.age);
-        float decimalPart = gameManager.age - whole;
-
-        if (decimalPart >= gameManager.decimalThreshold)
-        {
-            whole += 1;
-            gameManager.age = whole + 0.000f;
-        }
-
-        if (gameManager.age > gameManager.maxAge)
-            gameManager.age = gameManager.maxAge;
-
-        gameManager.UpdateUI();
     }
 }

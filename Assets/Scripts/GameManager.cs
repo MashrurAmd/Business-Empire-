@@ -5,7 +5,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("UI References")]
     public Text moneyText;
-    public Text ageText;
+    public Text ageText;                 // ✅ Current Age UI
+    public Text lifeExpectancyText;     // ✅ NEW: Max Age UI
     public Text messageText;
     public GameObject deathPanel;
     public Button restartButton;
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("Stats")]
     public float money = 0f;
     public float age = 18.000f;
-    public float maxAge = 20.000f;
+    public float maxAge = 20.000f;      // ✅ Life Expectancy
     public float ageIncrement = 0.001f;
     public float decimalThreshold = 0.365f;
     public float minMoneyBeforeDeath = -5000f;
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     public bool hasCart = false;
 
     public float lockerUpkeepTimer = 0f;
-    public float lockerUpkeepInterval = 600f; // 10 min
+    public float lockerUpkeepInterval = 600f;
     public int maskClicksRemaining = 0;
     public int cupClicksRemaining = 0;
     public int cartClicksRemaining = 0;
@@ -73,10 +74,12 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void IncreaseMaxAge()
+    // ✅ THIS IS ONLY FOR LIFE EXPECTANCY (MAX AGE)
+    public void IncreaseMaxAge(float amount)
     {
-        maxAge += 0.001f;
-        Debug.Log(maxAge);
+        maxAge += amount;
+        Debug.Log("Max Age increased by " + amount + ". New Max Age: " + maxAge);
+        UpdateUI();
     }
 
     private void ApplyAgeIncrement(float increment)
@@ -92,7 +95,8 @@ public class GameManager : MonoBehaviour
             age = whole + 0.000f;
         }
 
-        if (age > maxAge) age = maxAge;
+        if (age > maxAge)
+            age = maxAge;
     }
 
     public void AddLifeLoss(int amount)
@@ -114,16 +118,25 @@ public class GameManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        if (moneyText) moneyText.text = "Money: $" + money.ToString("F2");
-        if (ageText) ageText.text = "Age: " + age.ToString("F3");
+        if (moneyText)
+            moneyText.text = "Money: $" + money.ToString("F2");
+
+        if (ageText)
+            ageText.text = "Age: " + age.ToString("F3");  // ✅ Current Age Only
+
+        if (lifeExpectancyText)
+            lifeExpectancyText.text = "Life Expectancy: " + maxAge.ToString("F3"); // ✅ Max Age Only
     }
 
     private void CheckDeath()
     {
         if (gameOver) return;
 
-        if (age >= maxAge) HandleDeath("You have reached the end of your life.");
-        if (money <= minMoneyBeforeDeath) HandleDeath("You went bankrupt!");
+        if (age >= maxAge)
+            HandleDeath("You have reached the end of your life.");
+
+        if (money <= minMoneyBeforeDeath)
+            HandleDeath("You went bankrupt!");
     }
 
     private void HandleDeath(string msg)
@@ -131,7 +144,8 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         PrintMessage(msg);
 
-        if (deathPanel != null) deathPanel.SetActive(true);
+        if (deathPanel != null)
+            deathPanel.SetActive(true);
     }
 
     public void RestartGame()
@@ -139,6 +153,7 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         money = 0f;
         age = 18.000f;
+        maxAge = 20.000f; // ✅ Reset Life Expectancy
 
         hasLocker = false;
         hasMask = false;
@@ -154,7 +169,8 @@ public class GameManager : MonoBehaviour
         cupClicksRemaining = 0;
         cartClicksRemaining = 0;
 
-        if (deathPanel != null) deathPanel.SetActive(false);
+        if (deathPanel != null)
+            deathPanel.SetActive(false);
 
         PrintMessage("Game restarted!");
         UpdateUI();
@@ -164,7 +180,6 @@ public class GameManager : MonoBehaviour
     // ----------------- UPDATE LOOP -----------------
     void Update()
     {
-        // Locker upkeep every 10 min
         if (hasLocker)
         {
             lockerUpkeepTimer += Time.deltaTime;
@@ -176,7 +191,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // Auto Robbery
         if (robberyEnabled && !gameOver)
         {
             robberyTimer += Time.deltaTime;
@@ -192,7 +206,7 @@ public class GameManager : MonoBehaviour
     // ----------------- ROBBERY -----------------
     private void ScheduleNextRobbery()
     {
-        nextRobberyTime = Random.Range(300f, 900f); // 5–15 minutes
+        nextRobberyTime = Random.Range(300f, 900f);
     }
 
     public void TriggerRobbery()
@@ -208,13 +222,4 @@ public class GameManager : MonoBehaviour
             PrintMessage("You were robbed! All money is gone.");
         }
     }
-
-
-    public void IncreaseMaxAge(float amount)
-    {
-        maxAge += amount;
-        Debug.Log("Max Age increased by " + amount + ". New Max Age: " + maxAge);
-    }
-
-
 }
