@@ -5,6 +5,7 @@ public class HomePanelManager : MonoBehaviour
 {
     [Header("Game Manager Reference")]
     public GameManager gameManager;
+    public GameObject gameManagerObject;
 
     [Header("Food Buttons")]
     public Button homeCookingButton;
