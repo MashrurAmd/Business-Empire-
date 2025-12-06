@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class HomePanelManager : MonoBehaviour
         if (feastButton != null) feastButton.onClick.AddListener(HaveAFeast);
         if (personalChefButton != null) personalChefButton.onClick.AddListener(PersonalChef);
     }
-
+    //FOOD
     bool CanAct()
     {
         return gameManager != null && !gameManager.gameOver;
@@ -111,4 +112,28 @@ public class HomePanelManager : MonoBehaviour
         gameManager.IncreaseMaxAge(0.1f);
         gameManager.PrintMessage("Eat until your heart contents.");
     }
+
+
+    //House 
+
+    //Move in with friends
+    //Room
+    //Apartment
+    //Condo
+    //House
+    //Mansion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
