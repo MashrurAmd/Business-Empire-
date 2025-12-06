@@ -116,12 +116,15 @@ public class HomePanelManager : MonoBehaviour
 
     //House 
 
-    //Move in with friends
-    //Room
-    //Apartment
-    //Condo
-    //House
-    //Mansion
+    //Move in with friends - "This couch is comfortable." , improbe hra;tj
+    //Room - "You have your own spot in the fridge."
+    //Apartment - "Finally your own bathroom."
+    //Condo - "Sweet Ownership."
+    //House - "Upstairs and downstairs?!"
+    //Mansion - "More space than you can ever need."
+
+
+
 
 
 
