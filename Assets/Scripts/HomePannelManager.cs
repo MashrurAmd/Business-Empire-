@@ -116,16 +116,60 @@ public class HomePanelManager : MonoBehaviour
 
     //House 
 
-    //Move in with friends - "This couch is comfortable." , improbe hra;tj
-    //Room - "You have your own spot in the fridge."
-    //Apartment - "Finally your own bathroom."
-    //Condo - "Sweet Ownership."
-    //House - "Upstairs and downstairs?!"
-    //Mansion - "More space than you can ever need."
+    //Move in with friends - "This couch is comfortable." , increase max age by 0.01f, price free
+    //Room - "You have your own spot in the fridge." , increase max age by 0.05f, price 
+    //Apartment - "Finally your own bathroom." , increase max age by 0.1f
+    //Condo - "Sweet Ownership." , increase max age by 2.00f
+    //House - "Upstairs and downstairs?!" , increase max age by 10.00f
+    //Mansion - "More space than you can ever need." , increase max age by 30.00f, price 100000f
 
 
 
+    //Insurance 
 
+    //Health Insurance - "This couch is comfortable." , increase max age by 0.01f, price free
+    //Car Insurance - "You have your own spot in the fridge." , increase max age by 0.05f, price 
+    //Home Insurance - "Finally your own bathroom." , increase max age by 0.1f
+    //Life Insurance - "Sweet Ownership." , increase max age by 2.00f
+    //Employee Insurance - "Upstairs and downstairs?!" , increase max age by 10.00f
+
+
+
+    //HealthCare 
+
+    //Emergency Room - "This couch is comfortable." , increase max age by 0.01f, price free
+    //Dentist - "You have your own spot in the fridge." , increase max age by 0.05f, price 
+    //Optimetrist - "Finally your own bathroom." , increase max age by 0.1f
+    //Clinic - "Sweet Ownership." , increase max age by 2.00f
+    //Annual Visit - "Upstairs and downstairs?!" , increase max age by 10.00f
+    //Home Visit - "More space than you can ever need." , increase max age by 30.00f, price 100000f
+
+
+    //Travel 
+
+    //Weekend Getaway - "This couch is comfortable." , increase max age by 0.01f, price free
+    //Cruise - "You have your own spot in the fridge." , increase max age by 0.05f, price 
+    //All Inclusive - "Finally your own bathroom." , increase max age by 0.1f
+    //Safari - "Sweet Ownership." , increase max age by 2.00f
+    //Overseas - "Upstairs and downstairs?!" , increase max age by 10.00f
+
+
+    //Spirituality 
+
+    //Spiritual App - "This couch is comfortable." , increase max age by 0.01f, price free
+    //Meditate - "You have your own spot in the fridge." , increase max age by 0.05f, price 
+    //Pray - "Finally your own bathroom." , increase max age by 0.1f
+    //House of Worship - "Sweet Ownership." , increase max age by 2.00f
+    //Spiritual Retreat - "Upstairs and downstairs?!" , increase max age by 10.00f
+
+
+    //Family 
+
+    //Date - "This couch is comfortable." , increase max age by 0.01f, price free
+    //Engagement - "You have your own spot in the fridge." , increase max age by 0.05f, price 
+    //Marriage - "Finally your own bathroom." , increase max age by 0.1f
+    //Baby - "Sweet Ownership." , increase max age by 2.00f
+    //Twins - "Upstairs and downstairs?!" , increase max age by 10.00f
 
 
 
