@@ -149,27 +149,27 @@ public class HomePanelManager : MonoBehaviour
 
     //Weekend Getaway - "Weekend away." , increase max age by 0.01f, price free
     //Cruise - "Site seeing on the seas." , increase max age by 0.05f, price 
-    //All Inclusive - "Finally your own bathroom." , increase max age by 0.1f
-    //Safari - "Sweet Ownership." , increase max age by 2.00f
-    //Overseas - "Upstairs and downstairs?!" , increase max age by 10.00f
+    //All Inclusive - "Rest, relax and repeat." , increase max age by 0.1f
+    //Safari - "Natures beauty." , increase max age by 2.00f
+    //Overseas - "High life abroad.", increase max age by 10.00f
 
 
     //Spirituality 
 
-    //Spiritual App - "This couch is comfortable." , increase max age by 0.01f, price free
-    //Meditate - "You have your own spot in the fridge." , increase max age by 0.05f, price 
-    //Pray - "Finally your own bathroom." , increase max age by 0.1f
-    //House of Worship - "Sweet Ownership." , increase max age by 2.00f
-    //Spiritual Retreat - "Upstairs and downstairs?!" , increase max age by 10.00f
+    //Spiritual App - "Spirituality in your pocket." , increase max age by 0.01f, price free
+    //Meditate - "Breathe in and breathe out." , increase max age by 0.05f, price 
+    //Pray - "Pray in your peace." , increase max age by 0.1f
+    //House of Worship - "Hear the word" , increase max age by 2.00f
+    //Spiritual Retreat - "Be with others." , increase max age by 10.00f
 
 
     //Family 
 
-    //Date - "This couch is comfortable." , increase max age by 0.01f, price free
-    //Engagement - "You have your own spot in the fridge." , increase max age by 0.05f, price 
-    //Marriage - "Finally your own bathroom." , increase max age by 0.1f
-    //Baby - "Sweet Ownership." , increase max age by 2.00f
-    //Twins - "Upstairs and downstairs?!" , increase max age by 10.00f
+    //Date - "That was fun." , increase max age by 0.01f, price free
+    //Engagement - "Let's make this official." , increase max age by 0.05f, price 
+    //Marriage - "Newlyweds." , increase max age by 0.1f
+    //Baby - "First born." , increase max age by 2.00f
+    //Twins - "Double the trouble." , increase max age by 10.00f
 
 
 
