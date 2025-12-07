@@ -127,28 +127,28 @@ public class HomePanelManager : MonoBehaviour
 
     //Insurance 
 
-    //Health Insurance - "This couch is comfortable." , increase max age by 0.01f, price free
-    //Car Insurance - "You have your own spot in the fridge." , increase max age by 0.05f, price 
-    //Home Insurance - "Finally your own bathroom." , increase max age by 0.1f
-    //Life Insurance - "Sweet Ownership." , increase max age by 2.00f
-    //Employee Insurance - "Upstairs and downstairs?!" , increase max age by 10.00f
+    //Health Insurance - "Healthy as a horse." , increase max age by 0.01f, price free
+    //Car Insurance - "Protect your wheels." , increase max age by 0.05f, price 
+    //Home Insurance - "Protect your home." , increase max age by 0.1f
+    //Life Insurance - "Protect your life.", increase max age by 2.00f
+    //Employee Insurance - "Healthy employees support healthy business." , increase max age by 10.00f
 
 
 
     //HealthCare 
 
-    //Emergency Room - "This couch is comfortable." , increase max age by 0.01f, price free
-    //Dentist - "You have your own spot in the fridge." , increase max age by 0.05f, price 
-    //Optimetrist - "Finally your own bathroom." , increase max age by 0.1f
-    //Clinic - "Sweet Ownership." , increase max age by 2.00f
-    //Annual Visit - "Upstairs and downstairs?!" , increase max age by 10.00f
-    //Home Visit - "More space than you can ever need." , increase max age by 30.00f, price 100000f
+    //Emergency Room - "Hopefully the wait isn't too long." , increase max age by 0.01f, price free
+    //Dentist - "Pearly whites" , increase max age by 0.05f, price 
+    //Optimetrist - "E, X, D, Q, Y" , increase max age by 0.1f
+    //Clinic - "All vitals are in order." , increase max age by 2.00f
+    //Annual Visit - "Healthy as a horse." , increase max age by 10.00f
+    //Home Visit - "Health care for the rich and famous." , increase max age by 30.00f, price 100000f
 
 
     //Travel 
 
-    //Weekend Getaway - "This couch is comfortable." , increase max age by 0.01f, price free
-    //Cruise - "You have your own spot in the fridge." , increase max age by 0.05f, price 
+    //Weekend Getaway - "Weekend away." , increase max age by 0.01f, price free
+    //Cruise - "Site seeing on the seas." , increase max age by 0.05f, price 
     //All Inclusive - "Finally your own bathroom." , increase max age by 0.1f
     //Safari - "Sweet Ownership." , increase max age by 2.00f
     //Overseas - "Upstairs and downstairs?!" , increase max age by 10.00f
