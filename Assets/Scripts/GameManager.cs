@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public Text ageText;                 // ✅ Current Age UI
     public Text lifeExpectancyText;     // ✅ NEW: Max Age UI
     public Text messageText;
+    public Button reputationText;
     public GameObject deathPanel;
     public Button restartButton;
 
