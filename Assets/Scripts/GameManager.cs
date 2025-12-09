@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public float ageIncrement = 0.001f;
     public float decimalThreshold = 0.365f;
     public float minMoneyBeforeDeath = -5000f;
+    public float reputation = 0f;
 
     [Header("State")]
     public bool gameOver = false;
@@ -73,6 +74,19 @@ public class GameManager : MonoBehaviour
         CheckDeath();
         UpdateUI();
     }
+
+    // ----------------- REPUTATION SYSTEM -----------------
+    public void AddReputation(float amount)
+    {
+        if (gameOver) return;
+
+        reputation += amount;
+
+        Debug.Log("Reputation changed by " + amount + ". New Reputation: " + reputation);
+
+        UpdateUI(); // Optional now, but useful if you later add Reputation UI
+    }
+
 
     // ✅ THIS IS ONLY FOR LIFE EXPECTANCY (MAX AGE)
     public void IncreaseMaxAge(float amount)
