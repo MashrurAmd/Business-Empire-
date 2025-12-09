@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class EarningPanelManager : MonoBehaviour
@@ -19,6 +19,11 @@ public class EarningPanelManager : MonoBehaviour
     public Button knifeButton;
     public Button phoneButton;
 
+    [Header("Chance Buttons")]
+    public Button lotteryButton;
+    public Button dicyDiceButton;
+    public Button casinoButton;
+
     private void Start()
     {
         if (begButton != null) begButton.onClick.AddListener(OnBegClicked);
@@ -31,6 +36,11 @@ public class EarningPanelManager : MonoBehaviour
         if (cartboardButton != null) cartboardButton.onClick.AddListener(OnCartboardClicked);
         if (knifeButton != null) knifeButton.onClick.AddListener(OnKnifeClicked);
         if (phoneButton != null) phoneButton.onClick.AddListener(OnPhoneClicked);
+
+        if (lotteryButton != null) lotteryButton.onClick.AddListener(OnLotteryClicked);
+        if (dicyDiceButton != null) dicyDiceButton.onClick.AddListener(OnDicyDiceClicked);
+        if (casinoButton != null) casinoButton.onClick.AddListener(OnCasinoClicked);
+
     }
 
     bool CanAct() => gameManager != null && !gameManager.gameOver;
@@ -231,4 +241,77 @@ public class EarningPanelManager : MonoBehaviour
         gameManager.hasPhone = true;
         gameManager.PrintMessage("You bought a phone. Messenger button unlocked!");
     }
+
+    public void OnLotteryClicked()
+    {
+        if (!CanAct()) return;
+
+        if (gameManager.money < 10)
+        {
+            gameManager.PrintMessage("Not enough money to buy a lottery ticket.");
+            return;
+        }
+
+        gameManager.AddMoney(-10);
+
+        if (Random.value <= 0.01f) // 1%
+        {
+            gameManager.AddMoney(1_000_000);
+            gameManager.PrintMessage("JACKPOT!!! You won $1,000,000!");
+        }
+        else
+        {
+            gameManager.PrintMessage("You lost the lottery.");
+        }
+    }
+
+    // 🎲 DICY DICE — $500 | 10% | $10,000
+    public void OnDicyDiceClicked()
+    {
+        if (!CanAct()) return;
+
+        if (gameManager.money < 500)
+        {
+            gameManager.PrintMessage("Not enough money to play Dicy Dice.");
+            return;
+        }
+
+        gameManager.AddMoney(-500);
+
+        if (Random.value <= 0.10f) // 10%
+        {
+            gameManager.AddMoney(10_000);
+            gameManager.PrintMessage("You won $10,000 in Dicy Dice!");
+        }
+        else
+        {
+            gameManager.PrintMessage("You lost in Dicy Dice.");
+        }
+    }
+
+    // 🏆 CASINO — $10,000 | 30% | $200,000
+    public void OnCasinoClicked()
+    {
+        if (!CanAct()) return;
+
+        if (gameManager.money < 10_000)
+        {
+            gameManager.PrintMessage("Not enough money to enter the casino.");
+            return;
+        }
+
+        gameManager.AddMoney(-10_000);
+
+        if (Random.value <= 0.30f) // 30%
+        {
+            gameManager.AddMoney(200_000);
+            gameManager.PrintMessage("BIG WIN! You made $200,000 at the casino!");
+        }
+        else
+        {
+            gameManager.PrintMessage("Casino always wins. You lost.");
+        }
+    }
+
+
 }

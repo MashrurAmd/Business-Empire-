@@ -9061,9 +9061,9 @@ RectTransform:
   - {fileID: 1846349701}
   m_Father: {fileID: 458608968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 481, y: -1450}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &269778924
@@ -14636,6 +14636,9 @@ MonoBehaviour:
   cartboardButton: {fileID: 1474766574}
   knifeButton: {fileID: 271252098}
   phoneButton: {fileID: 475233355}
+  lotteryButton: {fileID: 622694220}
+  dicyDiceButton: {fileID: 1300702145}
+  casinoButton: {fileID: 522924324}
 --- !u!114 &457659267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42206,9 +42209,9 @@ RectTransform:
   - {fileID: 1707144096}
   m_Father: {fileID: 458608968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 481, y: -4250}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1300702143
@@ -65020,9 +65023,9 @@ RectTransform:
   - {fileID: 99944870}
   m_Father: {fileID: 458608968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 481, y: -2850}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2059613374
@@ -65733,9 +65736,9 @@ RectTransform:
   - {fileID: 950401047}
   m_Father: {fileID: 458608968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 481, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2087550124
