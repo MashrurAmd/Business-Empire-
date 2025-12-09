@@ -218,6 +218,8 @@ public class EarningPanelManager : MonoBehaviour
         gameManager.AddMoney(-10);
         gameManager.hasKnife = true;
         gameManager.PrintMessage("You bought a knife. Steal button unlocked!");
+
+        //gameManager.AddReputation(5f);
     }
 
     public void OnPhoneClicked()

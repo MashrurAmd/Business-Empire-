@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public Text ageText;                 // ✅ Current Age UI
     public Text lifeExpectancyText;     // ✅ NEW: Max Age UI
     public Text messageText;
-    public Button reputationText;
+    public Text reputationText;
     public GameObject deathPanel;
     public Button restartButton;
 
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public float ageIncrement = 0.001f;
     public float decimalThreshold = 0.365f;
     public float minMoneyBeforeDeath = -5000f;
-    public float reputation = 0f;
+    
 
     [Header("State")]
     public bool gameOver = false;
@@ -46,6 +46,10 @@ public class GameManager : MonoBehaviour
     public bool robberyEnabled = true;
     private float robberyTimer = 0f;
     private float nextRobberyTime = 0f;
+
+    [Header("Reputation")]
+    public float reputation = 0f;
+
 
     void Start()
     {
@@ -79,14 +83,11 @@ public class GameManager : MonoBehaviour
     // ----------------- REPUTATION SYSTEM -----------------
     public void AddReputation(float amount)
     {
-        if (gameOver) return;
-
         reputation += amount;
-
-        Debug.Log("Reputation changed by " + amount + ". New Reputation: " + reputation);
-
-        UpdateUI(); // Optional now, but useful if you later add Reputation UI
+        reputation = Mathf.Max(0, reputation); // no negative reputation
+        PrintMessage($"Reputation increased to {reputation:F1}");
     }
+
 
 
     // ✅ THIS IS ONLY FOR LIFE EXPECTANCY (MAX AGE)
@@ -141,6 +142,9 @@ public class GameManager : MonoBehaviour
 
         if (lifeExpectancyText)
             lifeExpectancyText.text = "Life Expectancy: " + maxAge.ToString("F3"); // ✅ Max Age Only
+
+        if (reputationText)
+            reputationText.text = "Reputation: " + reputation.ToString("F1"); // ✅ FIXED
     }
 
     private void CheckDeath()
