@@ -103,9 +103,10 @@ public class GameManager : MonoBehaviour
     public void AddReputation(float amount)
     {
         reputation += amount;
-        reputation = Mathf.Max(0, reputation); // no negative reputation
-        PrintMessage($"Reputation increased to {reputation:F1}");
+        reputation = Mathf.Max(0, reputation);
+        UpdateUI(); // 🔥 THIS LINE WAS MISSING
     }
+
 
 
 
@@ -163,7 +164,8 @@ public class GameManager : MonoBehaviour
             lifeExpectancyText.text = "Life Expectancy: " + maxAge.ToString("F3"); // ✅ Max Age Only
 
         if (reputationText)
-            reputationText.text = "Reputation: " + reputation.ToString("F1"); // ✅ FIXED
+            reputationText.text = "Reputation: " + reputation.ToString("F1");
+
     }
 
     private void CheckDeath()
