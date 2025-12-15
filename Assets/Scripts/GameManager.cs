@@ -51,6 +51,25 @@ public class GameManager : MonoBehaviour
     public float reputation = 0f;
 
 
+    [Header("Education Flags")]
+    public bool wentToTradeSchool = false;
+
+    public bool hasGED = false;
+    public bool hasBachelors = false;
+    public bool hasMBA = false;
+    public bool hasPHD = false;
+    public bool hasMD = false;
+
+    [Header("Exams Passed")]
+    public bool passedGEDExam = false;
+    public bool passedUndergradExam = false;
+    public bool passedMBAExam = false;
+    public bool passedPHDExam = false;
+    public bool passedBarExam = false;
+    public bool passedMDExam = false;
+
+
+
     void Start()
     {
         if (deathPanel != null) deathPanel.SetActive(false);
