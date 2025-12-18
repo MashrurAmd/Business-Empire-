@@ -155,7 +155,10 @@ public class GameManager : MonoBehaviour
     public void UpdateUI()
     {
         if (moneyText)
-            moneyText.text = "Money: $" + money.ToString("F2");
+            
+
+            moneyText.text = "Money: $" + FormatMoney(money);
+
 
         if (ageText)
             ageText.text = "Age: " + age.ToString("F3");  // ✅ Current Age Only
@@ -262,4 +265,18 @@ public class GameManager : MonoBehaviour
             PrintMessage("You were robbed! All money is gone.");
         }
     }
+
+
+    public string FormatMoney(double amount)
+    {
+        if (amount >= 1_000_000_000)
+            return (amount / 1_000_000_000d).ToString("0.#") + "B";
+        if (amount >= 1_000_000)
+            return (amount / 1_000_000d).ToString("0.#") + "M";
+        if (amount >= 1_000)
+            return (amount / 1_000d).ToString("0.#") + "K";
+
+        return amount.ToString("0");
+    }
+
 }
