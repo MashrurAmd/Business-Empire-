@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
     public Button restartButton;
 
     [Header("Stats")]
-    public float money = 0f;
+    public float money = 0;
     public float age = 18.000f;
     public float maxAge = 20.000f;      // ✅ Life Expectancy
     public float ageIncrement = 0.001f;
     public float decimalThreshold = 0.365f;
-    public float minMoneyBeforeDeath = -5000f;
+    public float minMoneyBeforeDeath = -5000;
     
 
     [Header("State")]
@@ -68,6 +68,17 @@ public class GameManager : MonoBehaviour
     public bool passedBarExam = false;
     public bool passedMDExam = false;
 
+    [System.Serializable]
+    public class BusinessData
+    {
+        public string id;
+        public string displayName;
+        public double cost;
+        public double incomeAmount;
+        public bool owned;
+    }
+
+
 
 
     void Start()
@@ -80,15 +91,20 @@ public class GameManager : MonoBehaviour
     }
 
     // ----------------- MONEY + AGE SYSTEM -----------------
-    public void AddMoney(float amount)
+    public void AddMoney(double amount)
     {
         if (gameOver) return;
 
-        money += amount;
+        money += (float)amount;
+
+        // Age still increases per action
         ApplyAgeIncrement(ageIncrement);
+
         CheckDeath();
         UpdateUI();
     }
+
+
 
     public void IncreaseAge()
     {
@@ -229,7 +245,7 @@ public class GameManager : MonoBehaviour
             if (lockerUpkeepTimer >= lockerUpkeepInterval)
             {
                 lockerUpkeepTimer = 0f;
-                AddMoney(-1f);
+                AddMoney(-1);
                 PrintMessage("Locker upkeep cost -$1");
             }
         }
